@@ -1,0 +1,26 @@
+name: Performance Test
+
+on: push
+
+jobs:
+  super-lint:
+    name: Performance Test Code
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.12.0]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+
+      - name: Run performance testing script
+        run: yarn pref-test
+
+      - name: Run Danger.js
+        run: yarn danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
