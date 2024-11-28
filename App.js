@@ -6,7 +6,7 @@ const App = () => {
   const pressCount = () => {
     setTimeout(() => {
       setCount(count + 1)
-    }, 500)
+    }, 600)
   }
   return (
     <SafeAreaView>
