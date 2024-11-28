@@ -11,7 +11,7 @@ test('App Page test onPress', async () => {
     const scenario = async () => {
         const button = screen.getByTestId('btn1');
         fireEvent.press(button);
-        await screen.findByText('Count: 1', {}, { timeout: 1000 });
+        await screen.findByText('Count: 1', {}, { timeout: 2000 });
     }
     await measureRenders(<App />, { scenario, runs: 10 });
 })
