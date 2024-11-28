@@ -33,12 +33,14 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
-
+.yarn
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
+yarn.lock
+package-lock.json
 
 # fastlane
 #
@@ -64,3 +66,5 @@ yarn-error.log
 
 # testing
 /coverage
+# Reassure output directory
+.reassure
