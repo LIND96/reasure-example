@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, FlatList } from 'react-native';
 
 const App = () => {
@@ -6,6 +6,14 @@ const App = () => {
   const pressCount = () => {
     setCount(count + 1)
   }
+  const listData = useMemo(() => {
+    return <FlatList
+      data={Array.from({ length: 200 }, (_, index) => index)}
+      renderItem={({ item, index }) => {
+        return <Text>List: {item}</Text>
+      }}
+    />
+  }, [])
   return (
     <SafeAreaView>
       <View>
@@ -17,12 +25,8 @@ const App = () => {
           <Text style={{ fontWeight: 'bold' }}>Add Count</Text>
         </TouchableOpacity>
       </View>
-      <FlatList
-        data={Array.from({ length: 200 }, (_, index) => index)}
-        renderItem={({item,index})=>{
-          return <Text>List: {item}</Text>
-        }}
-      />
+      {listData}
+
     </SafeAreaView>
   )
 }
